@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        app:cardCornerRadius="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+
+                android:layout_gravity="right"
+                android:src="@drawable/newicon"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+            </ImageView>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imgproduct_oder"
+                    android:src="@drawable/noimage"
+                    android:layout_marginTop="10dp"
+
+                    android:layout_width="100dp"
+                    android:layout_height="100dp">
+
+                </ImageView>
+                <TextView
+                    android:id="@+id/txtproduct_oder"
+                    android:textSize="15sp"
+                    android:textColor="#FF0D0D"
+                    android:text="Ten Product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+            </LinearLayout>
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
