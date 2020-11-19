@@ -20,7 +20,6 @@ import java.util.List;
 public class Product_hot_Adapter extends RecyclerView.Adapter<Product_hot_Adapter.ViewHolder> {
     Context context;
     int layout;
-
     List<Product_hot> list;
 
 

@@ -10,10 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.oderapp.Fragment.HomeFragment;
 import com.example.oderapp.Model.Product_suggestion;
 import com.example.oderapp.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public
@@ -22,7 +24,8 @@ class Product_suggestion_Adapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int TYPE_LOADING = 2;
     private List<Product_suggestion> mList_Product_suggestion;
     private boolean isLoadingAdd;
-
+    public Product_suggestion_Adapter() {
+    }
     @Override
     public int getItemViewType(int position) {
         if(mList_Product_suggestion != null && position == mList_Product_suggestion.size()-1 && isLoadingAdd){
@@ -30,7 +33,6 @@ class Product_suggestion_Adapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
         return TYPE_ITEM;
     }
-
     public void setmList_Product_suggestion(List<Product_suggestion> mList_Product_suggestion) {
         this.mList_Product_suggestion = mList_Product_suggestion;
         notifyDataSetChanged();
@@ -69,7 +71,11 @@ class Product_suggestion_Adapter extends RecyclerView.Adapter<RecyclerView.ViewH
             Product_suggestion product_suggestion = mList_Product_suggestion.get(position);
             Suggestion_ViewHolder suggestion_viewHolder = (Suggestion_ViewHolder) holder;
             suggestion_viewHolder.txtproduct_suggestion_name.setText(product_suggestion.getName());
-            suggestion_viewHolder.txtproduct_suggestion_price.setText(product_suggestion.getPrice());
+
+            DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+            suggestion_viewHolder.txtproduct_suggestion_price.setText("Giá: "+decimalFormat.format(product_suggestion.getPrice())+"đ");
+
+
             Picasso.get().load(product_suggestion.getImage())
                     .placeholder(R.drawable.loader)
                     .error(R.drawable.noimage)
@@ -86,7 +92,6 @@ class Product_suggestion_Adapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
     public  void addFooterLoading(){
         isLoadingAdd = true;
-        mList_Product_suggestion.add(new Product_suggestion(1,"as","bs","2000d"));
     }
     public  void  removeFooterLoading(){
         isLoadingAdd = false;

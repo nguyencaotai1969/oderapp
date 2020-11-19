@@ -5,7 +5,7 @@ class Product_suggestion {
     private  int id;
     private String name;
     private String image;
-    private String Price;
+    private int Price;
 
     public int getId() {
         return id;
@@ -31,15 +31,15 @@ class Product_suggestion {
         this.image = image;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return Price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         Price = price;
     }
 
-    public Product_suggestion(int id, String name, String image, String price) {
+    public Product_suggestion(int id, String name, String image, int price) {
         this.id = id;
         this.name = name;
         this.image = image;

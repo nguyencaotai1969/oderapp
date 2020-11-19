@@ -1,6 +1,9 @@
 package com.example.oderapp.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,19 +16,24 @@ import com.example.oderapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
+    ImageView seartMainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment()).commit();
         mapping();
+        seartMainActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,SearchActivity.class));
+            }
+        });
     }
 
 
-
-
     private void mapping() {
+        seartMainActivity  = findViewById(R.id.seartMainActivity);
         BottomNavigationView btnNav = findViewById(R.id.button_navication_view);
         btnNav.setOnNavigationItemSelectedListener(navListent);
 
@@ -46,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.profile:
                     selectFragment = new ProfileFragment();
                     break;
+
 
 
             }
