@@ -9,11 +9,8 @@
     tools:context=".Activity.MainActivity">
     <androidx.appcompat.widget.Toolbar
         android:layout_weight="1"
-        android:background="#9BFFA0"
-
         android:layout_width="match_parent"
         android:layout_height="80dp">
-
         <ImageView
             android:id="@+id/logo"
             android:layout_width="40dp"
@@ -22,7 +19,6 @@
             android:layout_marginRight="20dp"
             android:src="@drawable/home"
             android:visibility="visible" />
-
         <ImageButton
             android:layout_gravity="right"
             android:layout_marginRight="10dp"
@@ -33,6 +29,7 @@
 
         </ImageButton>
         <ImageButton
+            android:id="@+id/seartMainActivity"
             android:layout_gravity="right"
             android:layout_marginRight="30dp"
             android:background="#00FFFFFF"
@@ -41,6 +38,7 @@
             android:layout_height="wrap_content">
 
         </ImageButton>
+
 
 
 
@@ -76,9 +74,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:itemIconTint="@color/tabitem"
         app:itemTextColor="@color/tabitem"
-        android:background="@drawable/tabcornershape"
-
         app:menu="@menu/bottom_nav_menu"/>
-
-
 </LinearLayout>

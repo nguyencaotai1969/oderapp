@@ -2,6 +2,7 @@ package com.example.oderapp.Fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.oderapp.Adapter.Product_hot_Adapter;
 import com.example.oderapp.Adapter.Product_oders_Adapter;
 import com.example.oderapp.Adapter.Product_suggestion_Adapter;
@@ -26,6 +33,10 @@ import com.smarteist.autoimageslider.DefaultSliderView;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +57,8 @@ public class HomeFragment extends Fragment {
 
     private boolean isLoading;
     private boolean isLastPage;
-    private  int totalPage = 5;
-    private int currentPage = 1;
+    private  int totalPage = 4;
+    private int currentPage = 0;
 
 
     RecyclerView recyclerViewlist_product_host,recyclerViewlist_product_oder,recyclerViewlist_product_suggestion;
@@ -79,13 +90,13 @@ public class HomeFragment extends Fragment {
 
     }
 
+
     private void data_product_susggestion() {
 
 
         product_suggestion_adapter = new Product_suggestion_Adapter();
-        recyclerViewlist_product_suggestion.setHasFixedSize(true);
-
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+        recyclerViewlist_product_suggestion.setHasFixedSize(true);
         recyclerViewlist_product_suggestion.setLayoutManager(gridLayoutManager);
         recyclerViewlist_product_suggestion.setAdapter(product_suggestion_adapter);
 
@@ -94,7 +105,7 @@ public class HomeFragment extends Fragment {
 //        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
 //        recyclerViewlist_product_suggestion.addItemDecoration(itemDecoration);
 
-
+        product_suggestions_list = new ArrayList<>();
         product_suggestions_list = getProduct_suggestions_list();
         product_suggestion_adapter.setmList_Product_suggestion(product_suggestions_list);
         if(currentPage < totalPage){
@@ -144,7 +155,7 @@ public class HomeFragment extends Fragment {
 
         List<Product_suggestion> list = new ArrayList<>();
         for (int i =1 ; i <=4 ; i++){
-            list.add(new Product_suggestion(1,"a","https://static.vietnammm.com/images/restaurants/vn/NPOQPP7/logo_465x320.png","2000"));
+            list.add(new Product_suggestion(1,"a","https://static.vietnammm.com/images/restaurants/vn/NPOQPP7/logo_465x320.png",2000));
         }
         return list;
     }
@@ -162,29 +173,65 @@ public class HomeFragment extends Fragment {
     }
 
     private void setSildetView() {
-        for (int i = 0;i<5;i++){
-            DefaultSliderView sliderView = new DefaultSliderView(getContext());
-            switch (i){
-                case 0:
-                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/singer/avatar/2019/10/29/a/a/d/4/1572318457703.jpg");
-                    break;
-                case 1:
-                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/02/21/e/e/b/a/1582252900439.jpg");
-                    break;
-                case 2:
-                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/03/16/d/2/1/a/1584322841753.jpg");
-                    break;
-                case 3:
-                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/03/17/7/d/1/c/1584441047388.jpg");
-                    break;
-                case 4:
-                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/01/15/2/7/d/2/1579077171605.jpg");
-                    break;
 
+        String url = "http://172.168.4.142:8089/OderApp_OOP/public/?controller=index&action=slider";
+        JsonArrayRequest arrayRequest = new JsonArrayRequest(Request.Method.GET,url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject;
+                Toast.makeText(getContext(), "AAA"+response, Toast.LENGTH_SHORT).show();
+                Log.d("AAAC",response.toString());
+//                        Toast.makeText(getContext(), "assa"+response.toString(), Toast.LENGTH_SHORT).show();
+//                for (int i = 0 ; i < response.length();i ++){
+//                        try {
+//                            jsonObject = response.getJSONObject(i);
+//                            Toast.makeText(getContext(), ""+jsonObject.getString("name"), Toast.LENGTH_SHORT).show();
+//                            DefaultSliderView sliderView = new DefaultSliderView(getContext());
+//                            sliderView.setImageUrl(jsonObject.getString("name"));
+//                            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+//                            sliderLayout.addSliderView(sliderView);
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                }
             }
-            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
-            sliderLayout.addSliderView(sliderView);
-        }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "error"+error, Toast.LENGTH_SHORT).show();
+                Log.d("error",error.toString());
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(arrayRequest);
+
+
+
+
+//        for (int i = 0;i<5;i++){
+//            DefaultSliderView sliderView = new DefaultSliderView(getContext());
+//            switch (i){
+//                case 0:
+//                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/singer/avatar/2019/10/29/a/a/d/4/1572318457703.jpg");
+//                    break;
+//                case 1:
+//                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/02/21/e/e/b/a/1582252900439.jpg");
+//                    break;
+//                case 2:
+//                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/03/16/d/2/1/a/1584322841753.jpg");
+//                    break;
+//                case 3:
+//                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/03/17/7/d/1/c/1584441047388.jpg");
+//                    break;
+//                case 4:
+//                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/01/15/2/7/d/2/1579077171605.jpg");
+//                    break;
+//
+//            }
+//            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+//            sliderLayout.addSliderView(sliderView);
+//        }
     }
     private void data_product_host() {
         product_hot_adapter = new Product_hot_Adapter(this.getContext(),R.layout.item_product_hot,product_hots_list);
