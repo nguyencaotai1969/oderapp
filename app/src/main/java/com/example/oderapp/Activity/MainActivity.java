@@ -5,11 +5,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-<<<<<<< HEAD
-import android.widget.TableLayout;
-=======
 import android.widget.TextView;
->>>>>>> 7a0e6377db671c3a88cb10d2299de92add46cb7e
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,11 +19,8 @@ import com.example.oderapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
-    ImageView seartMainActivity;
-=======
+
     ImageView seartMainActivity,logo;
->>>>>>> 7a0e6377db671c3a88cb10d2299de92add46cb7e
 
 
     @Override
