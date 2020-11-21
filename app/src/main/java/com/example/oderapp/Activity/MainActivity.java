@@ -1,9 +1,11 @@
 package com.example.oderapp.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +18,9 @@ import com.example.oderapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView seartMainActivity;
+    ImageView seartMainActivity,logo;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +33,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,SearchActivity.class));
             }
         });
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,MainActivity.class));
+
+            }
+        });
+
     }
 
 
     private void mapping() {
         seartMainActivity  = findViewById(R.id.seartMainActivity);
+        logo  = findViewById(R.id.logo);
         BottomNavigationView btnNav = findViewById(R.id.button_navication_view);
         btnNav.setOnNavigationItemSelectedListener(navListent);
 
