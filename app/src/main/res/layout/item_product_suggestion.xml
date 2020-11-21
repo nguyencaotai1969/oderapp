@@ -15,20 +15,17 @@
                 android:layout_gravity="right"
                 android:src="@drawable/newicon"
                 android:layout_width="50dp"
-                android:layout_height="50dp">
-            </ImageView>
+                android:layout_height="50dp"/>
             <LinearLayout
                 android:gravity="center"
-                android:layout_gravity="center"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/imgproduct_suggestion"
                     android:src="@drawable/noimage"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_width="110dp"
+                    android:layout_height="110dp">
                 </ImageView>
                 <TextView
                     android:id="@+id/txtproduct_suggestion_name"
@@ -37,7 +34,6 @@
                     android:text="Ten Product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-
                 </TextView>
                 <TextView
                     android:id="@+id/txtproduct_suggestion_price"
@@ -45,7 +41,7 @@
                     android:textColor="@color/cardview_dark_background"
                     android:text="Gia San Pham"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></TextView>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </FrameLayout>
     </androidx.cardview.widget.CardView>

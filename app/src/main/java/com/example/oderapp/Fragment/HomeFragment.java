@@ -174,13 +174,16 @@ public class HomeFragment extends Fragment {
 
     private void setSildetView() {
 
-        String url = "http://172.168.4.142:8089/OderApp_OOP/public/?controller=index&action=slider";
-        JsonArrayRequest arrayRequest = new JsonArrayRequest(Request.Method.GET,url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject;
-                Toast.makeText(getContext(), "AAA"+response, Toast.LENGTH_SHORT).show();
-                Log.d("AAAC",response.toString());
+//        String url = "http://172.168.4.142:8089/OderApp_OOP/public/?controller=index&action=slider";
+//        JsonArrayRequest arrayRequest = new JsonArrayRequest(Request.Method.GET,
+//                url,
+//                null,
+//                new Response.Listener<JSONArray>() {
+//                    @Override
+//                    public void onResponse(JSONArray response) {
+//                        JSONObject jsonObject;
+//                        Toast.makeText(getContext(), "AAA"+response, Toast.LENGTH_SHORT).show();
+//                        Log.d("AAAC",response.toString());
 //                        Toast.makeText(getContext(), "assa"+response.toString(), Toast.LENGTH_SHORT).show();
 //                for (int i = 0 ; i < response.length();i ++){
 //                        try {
@@ -195,43 +198,44 @@ public class HomeFragment extends Fragment {
 //                            e.printStackTrace();
 //                        }
 //                }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(getContext(), "error"+error, Toast.LENGTH_SHORT).show();
+//                        Log.d("error",error.toString());
+//                    }
+//                });
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        requestQueue.add(arrayRequest);
+
+
+
+
+        for (int i = 0;i<5;i++){
+            DefaultSliderView sliderView = new DefaultSliderView(getContext());
+            switch (i){
+                case 0:
+                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/singer/avatar/2019/10/29/a/a/d/4/1572318457703.jpg");
+                    break;
+                case 1:
+                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/02/21/e/e/b/a/1582252900439.jpg");
+                    break;
+                case 2:
+                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/03/16/d/2/1/a/1584322841753.jpg");
+                    break;
+                case 3:
+                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/03/17/7/d/1/c/1584441047388.jpg");
+                    break;
+                case 4:
+                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/01/15/2/7/d/2/1579077171605.jpg");
+                    break;
+
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "error"+error, Toast.LENGTH_SHORT).show();
-                Log.d("error",error.toString());
-            }
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(arrayRequest);
-
-
-
-
-//        for (int i = 0;i<5;i++){
-//            DefaultSliderView sliderView = new DefaultSliderView(getContext());
-//            switch (i){
-//                case 0:
-//                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/singer/avatar/2019/10/29/a/a/d/4/1572318457703.jpg");
-//                    break;
-//                case 1:
-//                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/02/21/e/e/b/a/1582252900439.jpg");
-//                    break;
-//                case 2:
-//                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/03/16/d/2/1/a/1584322841753.jpg");
-//                    break;
-//                case 3:
-//                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/03/17/7/d/1/c/1584441047388.jpg");
-//                    break;
-//                case 4:
-//                    sliderView.setImageUrl("https://avatar-nct.nixcdn.com/song/2020/01/15/2/7/d/2/1579077171605.jpg");
-//                    break;
-//
-//            }
-//            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
-//            sliderLayout.addSliderView(sliderView);
-//        }
+            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+            sliderLayout.addSliderView(sliderView);
+        }
     }
     private void data_product_host() {
         product_hot_adapter = new Product_hot_Adapter(this.getContext(),R.layout.item_product_hot,product_hots_list);
