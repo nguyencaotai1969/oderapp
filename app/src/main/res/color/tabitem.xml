@@ -5,7 +5,7 @@
         android:state_selected="true">
     </item>
     <item
-        android:color="@color/black"
+        android:color="#60000000"
         android:state_selected="false">
     </item>
 </selector>
