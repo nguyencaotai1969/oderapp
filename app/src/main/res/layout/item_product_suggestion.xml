@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+<<<<<<< HEAD
     android:layout_height="match_parent">
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
@@ -45,4 +46,49 @@
             </LinearLayout>
         </FrameLayout>
     </androidx.cardview.widget.CardView>
+=======
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="@drawable/background_circle"
+    android:layout_marginBottom="10dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/imgproduct_suggestion"
+        android:src="@drawable/home"
+        android:scaleType="centerCrop"
+        android:layout_width="60dp"
+        android:layout_height="60dp">
+
+    </ImageView>
+    <LinearLayout
+
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+>
+        <TextView
+
+            android:id="@+id/txtproduct_suggestion_name"
+            android:text="hello"
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <TextView
+            android:id="@+id/txtproduct_suggestion_price"
+            android:text="hello"
+            android:textColor="#FF2525"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+    </LinearLayout>
+>>>>>>> 7a0e6377db671c3a88cb10d2299de92add46cb7e
 </LinearLayout>

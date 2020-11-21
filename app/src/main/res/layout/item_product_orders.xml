@@ -2,26 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="8dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
+        android:background="@drawable/background_circle"
         app:cardCornerRadius="4dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <ImageView
+
+            android:layout_gravity="right"
+            android:src="@drawable/newicon"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+
+        </ImageView>
         <FrameLayout
+            android:background="@drawable/background_circle"
 
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView
 
-                android:layout_gravity="right"
-                android:src="@drawable/newicon"
-                android:layout_width="50dp"
-                android:layout_height="50dp">
-
-            </ImageView>
             <LinearLayout
                 android:gravity="center"
                 android:layout_gravity="center"
@@ -29,18 +32,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:scaleType="fitCenter"
                     android:id="@+id/imgproduct_oder"
                     android:src="@drawable/noimage"
                     android:layout_marginTop="10dp"
 
                     android:layout_width="100dp"
-                    android:layout_height="100dp">
+                    android:layout_height="120dp">
 
                 </ImageView>
                 <TextView
+                    android:layout_marginTop="10dp"
                     android:id="@+id/txtproduct_oder"
-                    android:textSize="15sp"
-                    android:textColor="#FF0D0D"
+                    android:textSize="17sp"
+                    android:textColor="#0D41FF"
                     android:text="Ten Product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
